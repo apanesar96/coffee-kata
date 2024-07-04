@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "3JMxpnCGt+9JrvYpAOEhIVxybfRf/RXwvwDI80kyCG+qpi//wqd0/2gyOGLwtAXG/iQdc7VCSbuFQ3SSqXFv4A==",
+  "dgSpecHash": "0N80NFPmL2V091KftCpW93R5Bh44nLL223Dq2GtpCCSMZ1ZoyivdoKt/Fy7KHNj3p5s7zapBwJaYP9XMW8y6/Q==",
   "success": true,
-  "projectFilePath": "/Users/amanpanesar/RiderProjects/TestProject1/TestProject1/TestProject1.csproj",
+  "projectFilePath": "/Users/amanpanesar/RiderProjects/TestProject1/CoffeeMachineKataTests/CoffeeMachineKataTests.csproj",
   "expectedPackageFiles": [
     "/Users/amanpanesar/.nuget/packages/coverlet.collector/6.0.0/coverlet.collector.6.0.0.nupkg.sha512",
     "/Users/amanpanesar/.nuget/packages/fluentassertions/7.0.0-alpha.3/fluentassertions.7.0.0-alpha.3.nupkg.sha512",

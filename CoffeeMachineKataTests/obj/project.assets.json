@@ -428,6 +428,16 @@
             "rid": "win"
           }
         }
+      },
+      "CoffeeMachineApp/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v8.0",
+        "compile": {
+          "bin/placeholder/CoffeeMachineApp.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/CoffeeMachineApp.dll": {}
+        }
       }
     }
   },
@@ -1107,10 +1117,16 @@
         "useSharedDesignerContext.txt",
         "version.txt"
       ]
+    },
+    "CoffeeMachineApp/1.0.0": {
+      "type": "project",
+      "path": "../CoffeeMachineApp/CoffeeMachineApp.csproj",
+      "msbuildProject": "../CoffeeMachineApp/CoffeeMachineApp.csproj"
     }
   },
   "projectFileDependencyGroups": {
     "net8.0": [
+      "CoffeeMachineApp >= 1.0.0",
       "FluentAssertions >= 7.0.0-alpha.3",
       "Microsoft.NET.Test.Sdk >= 17.6.0",
       "NUnit >= 3.13.3",
@@ -1125,11 +1141,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/Users/amanpanesar/RiderProjects/TestProject1/TestProject1/TestProject1.csproj",
-      "projectName": "TestProject1",
-      "projectPath": "/Users/amanpanesar/RiderProjects/TestProject1/TestProject1/TestProject1.csproj",
+      "projectUniqueName": "/Users/amanpanesar/RiderProjects/TestProject1/CoffeeMachineKataTests/CoffeeMachineKataTests.csproj",
+      "projectName": "CoffeeMachineKataTests",
+      "projectPath": "/Users/amanpanesar/RiderProjects/TestProject1/CoffeeMachineKataTests/CoffeeMachineKataTests.csproj",
       "packagesPath": "/Users/amanpanesar/.nuget/packages/",
-      "outputPath": "/Users/amanpanesar/RiderProjects/TestProject1/TestProject1/obj/",
+      "outputPath": "/Users/amanpanesar/RiderProjects/TestProject1/CoffeeMachineKataTests/obj/",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "/Users/amanpanesar/.nuget/NuGet/NuGet.Config"
@@ -1143,7 +1159,11 @@
       "frameworks": {
         "net8.0": {
           "targetAlias": "net8.0",
-          "projectReferences": {}
+          "projectReferences": {
+            "/Users/amanpanesar/RiderProjects/TestProject1/CoffeeMachineApp/CoffeeMachineApp.csproj": {
+              "projectPath": "/Users/amanpanesar/RiderProjects/TestProject1/CoffeeMachineApp/CoffeeMachineApp.csproj"
+            }
+          }
         }
       },
       "warningProperties": {
@@ -1197,7 +1217,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/8.0.100/PortableRuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/8.0.300/PortableRuntimeIdentifierGraph.json"
       }
     }
   }
