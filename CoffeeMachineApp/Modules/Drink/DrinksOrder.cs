@@ -1,6 +1,6 @@
 namespace CoffeeMachineApp.Modules.Drink;
 
-public record Drink(string Name, int Price, bool IsExtraHot, int NumberOfSugars);
+public record DrinksOrder(string Name, int MoneyGiven, bool IsExtraHot, int NumberOfSugars);
 
 // public abstract record HotDrink(int Price, bool IsExtraHot, int NumberOfSugars) : Drink(Price);
 //

@@ -9,25 +9,33 @@ public class CoffeeMachine
     private const string Coffee = "Coffee";
     private const string Orange = "Orange";
 
-    public string Order(Drink selectedDrink, int moneyGiven)
+    private readonly Dictionary<string, int> _priceLookup = new()
     {
-        if (moneyGiven < selectedDrink.Price)
+        { Tea, 40 },
+        { Coffee, 60 },
+        { Chocolate, 50 },
+        { Orange, 60 }
+    };
+    public string Order(DrinksOrder selectedDrinksOrder)
+    {
+        if (selectedDrinksOrder.MoneyGiven < _priceLookup[selectedDrinksOrder.Name])
         {
-            return $"M: Incorrect amount given. Please provide {selectedDrink.Price - moneyGiven} cents more";
+            return $"M: Incorrect amount given. Please provide {_priceLookup[selectedDrinksOrder.Name] -selectedDrinksOrder.MoneyGiven } cents more";
         }
 
-        var order = selectedDrink.NumberOfSugars > 0 ? $":{selectedDrink.NumberOfSugars}:0" : "::";
+        var order = selectedDrinksOrder.NumberOfSugars > 0 ? $":{selectedDrinksOrder.NumberOfSugars}:0" : "::";
 
-        return selectedDrink.Name switch
+        return selectedDrinksOrder.Name switch
         {
-            Tea => GenerateOrder("T", order, selectedDrink.IsExtraHot),
-            Coffee => GenerateOrder("C", order, selectedDrink.IsExtraHot),
-            Chocolate => GenerateOrder("H", order, selectedDrink.IsExtraHot),
+            Tea => GenerateOrder("T", order, selectedDrinksOrder.IsExtraHot),
+            Coffee => GenerateOrder("C", order, selectedDrinksOrder.IsExtraHot),
+            Chocolate => GenerateOrder("H", order, selectedDrinksOrder.IsExtraHot),
             Orange => $"O::",
-            _ => throw new ArgumentOutOfRangeException(nameof(selectedDrink), selectedDrink, null)
+            _ => throw new ArgumentOutOfRangeException(nameof(selectedDrinksOrder), selectedDrinksOrder, null)
         };
     }
 
     static string GenerateOrder(string drink, string order, bool isExtraHot) => 
         isExtraHot ? $"{drink}h{order}" : $"{drink}{order}";
 }
+
