@@ -1,6 +1,6 @@
 namespace CoffeeMachineApp.Modules.Drink;
 
-public record DrinksOrderRequest(string Name, int MoneyGiven, bool IsExtraHot, int NumberOfSugars);
+public record DrinksOrderRequest(DrinkType Name, int MoneyGiven, bool IsExtraHot, int NumberOfSugars);
 
 public class Drink
 {
@@ -13,4 +13,12 @@ public class Drink
     public string Name { get; }
     public int Price { get; }
     
+}
+
+public enum DrinkType
+{
+    Tea,
+    Coffee,
+    Chocolate,
+    Orange
 }

@@ -9,14 +9,6 @@ public class CoffeeMachine
     private const string Coffee = "Coffee";
     private const string Orange = "Orange";
 
-    private readonly Dictionary<string, int> _priceLookup = new()
-    {
-        { Tea, 40 },
-        { Coffee, 60 },
-        { Chocolate, 50 },
-        { Orange, 60 }
-    };
-
     public string Order(DrinksOrderRequest selectedDrinksOrderRequest)
     {
         var drink = GetAvailableDrink(selectedDrinksOrderRequest.Name);
@@ -29,22 +21,23 @@ public class CoffeeMachine
 
         return selectedDrinksOrderRequest.Name switch
         {
-            Tea => GenerateOrder("T", order, selectedDrinksOrderRequest.IsExtraHot),
-            Coffee => GenerateOrder("C", order, selectedDrinksOrderRequest.IsExtraHot),
-            Chocolate => GenerateOrder("H", order, selectedDrinksOrderRequest.IsExtraHot),
-            Orange => $"O::",
+            DrinkType.Tea => GenerateOrder("T", order, selectedDrinksOrderRequest.IsExtraHot),
+            DrinkType.Coffee => GenerateOrder("C", order, selectedDrinksOrderRequest.IsExtraHot),
+            DrinkType.Chocolate => GenerateOrder("H", order, selectedDrinksOrderRequest.IsExtraHot),
+            DrinkType.Orange => $"O::",
             _ => throw new ArgumentOutOfRangeException(nameof(selectedDrinksOrderRequest), selectedDrinksOrderRequest, null)
         };
     }
 
-    Drink GetAvailableDrink(string name)
+    Drink GetAvailableDrink(DrinkType name)
     {
         return name switch
         {
-            Tea => new Drink(Tea, 40),
-            Coffee => new Drink(Coffee, 60),
-            Chocolate => new Drink(Chocolate, 50),
-            Orange => new Drink(Orange, 60),
+            DrinkType.Tea => new Drink(Tea, 40),
+            DrinkType.Coffee => new Drink(Coffee, 60),
+            DrinkType.Chocolate => new Drink(Chocolate, 50),
+            DrinkType.Orange => new Drink(Orange, 60),
+            _ => throw new ArgumentOutOfRangeException(nameof(name), name, null)
         };
     }
 
