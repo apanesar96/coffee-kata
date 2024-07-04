@@ -16,26 +16,38 @@ public class CoffeeMachine
         { Chocolate, 50 },
         { Orange, 60 }
     };
-    public string Order(DrinksOrder selectedDrinksOrder)
+
+    public string Order(DrinksOrderRequest selectedDrinksOrderRequest)
     {
-        if (selectedDrinksOrder.MoneyGiven < _priceLookup[selectedDrinksOrder.Name])
+        var drink = GetAvailableDrink(selectedDrinksOrderRequest.Name);
+        if (selectedDrinksOrderRequest.MoneyGiven < drink.Price)
         {
-            return $"M: Incorrect amount given. Please provide {_priceLookup[selectedDrinksOrder.Name] -selectedDrinksOrder.MoneyGiven } cents more";
+            return $"M: Incorrect amount given. Please provide {drink.Price - selectedDrinksOrderRequest.MoneyGiven} cents more";
         }
 
-        var order = selectedDrinksOrder.NumberOfSugars > 0 ? $":{selectedDrinksOrder.NumberOfSugars}:0" : "::";
+        var order = selectedDrinksOrderRequest.NumberOfSugars > 0 ? $":{selectedDrinksOrderRequest.NumberOfSugars}:0" : "::";
 
-        return selectedDrinksOrder.Name switch
+        return selectedDrinksOrderRequest.Name switch
         {
-            Tea => GenerateOrder("T", order, selectedDrinksOrder.IsExtraHot),
-            Coffee => GenerateOrder("C", order, selectedDrinksOrder.IsExtraHot),
-            Chocolate => GenerateOrder("H", order, selectedDrinksOrder.IsExtraHot),
+            Tea => GenerateOrder("T", order, selectedDrinksOrderRequest.IsExtraHot),
+            Coffee => GenerateOrder("C", order, selectedDrinksOrderRequest.IsExtraHot),
+            Chocolate => GenerateOrder("H", order, selectedDrinksOrderRequest.IsExtraHot),
             Orange => $"O::",
-            _ => throw new ArgumentOutOfRangeException(nameof(selectedDrinksOrder), selectedDrinksOrder, null)
+            _ => throw new ArgumentOutOfRangeException(nameof(selectedDrinksOrderRequest), selectedDrinksOrderRequest, null)
         };
     }
 
-    static string GenerateOrder(string drink, string order, bool isExtraHot) => 
+    Drink GetAvailableDrink(string name)
+    {
+        return name switch
+        {
+            Tea => new Drink(Tea, 40),
+            Coffee => new Drink(Coffee, 60),
+            Chocolate => new Drink(Chocolate, 50),
+            Orange => new Drink(Orange, 60),
+        };
+    }
+
+    static string GenerateOrder(string drink, string order, bool isExtraHot) =>
         isExtraHot ? $"{drink}h{order}" : $"{drink}{order}";
 }
-
